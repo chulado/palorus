@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Palorus</title>
+
+    <!-- build:css styles/main.css -->
+    <link href="vendor/normalize-css/normalize.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    <link href="https://fontastic.s3.amazonaws.com/Cpm7GmZ83vzUDTMCV3cDDF/icons.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="//use.typekit.net/eor3bls.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+    <link href="https://fontastic.s3.amazonaws.com/eUiX9JCqYUbb3K4wkoC6qZ/icons.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="header-primary-container">
+      <div class="header-primary">
+        <div class="brand">
+          <a href="/" class="brand-logo"><img src="/images/logo.png"></a>
+          <a href="#" class="brand-slogan">Gifting on autopilot</a>
+        </div>
+        <nav class="nav">
+          <a href="#">Login</a>
+          <a href="#" class="btn">Get Started</a>
+        </nav>
+      </div>
+    </div>
+
+    <h1>Parallax</h1><p>Sly parallax mode provides a great interface into which you can chain your parallax animation frame renderer. You can effortlessly utilize a lot of Sly&#39;s features, like animation easing functions, mouse/touch dragging, mouse wheel scrolling, scrollbar rendering, optimized requestAnimationFrame based animation rendering, ... and focus only on writing a function that will render one frame of your screen.</p>
+<h2>Calling</h2><p>You initiate parallax mode by passing an integer specifying the top scroll value as the first argument:</p>
+<pre><code class="language-js">var parallax = new Sly(10000, options);
+</code></pre>
+<h2>Usage</h2><p>You&#39;ll generally want to bind your animation renderer to the <code>move</code> event. This event is directly chained to the requestAnimationFrame, and triggered on every animation frame when something is in motion, like user is scrolling, or dragging the handle or content.</p>
+<pre><code class="language-js">// Create a new Sly object in parallax mode
+var parallax = new Sly(10000, {
+    scrollSource: document, // Binds scroll listeners to `document`
+    scrollBy: 100, // Scroll by 100 per `mousewheel` event
+
+    dragSource: document, // Binds dragging listeners to `document`
+    mouseDragging: 1, // Enables dragging by mouse
+    touchDragging: 1, // Enables dragging by touch
+    releaseSwing: 1,  // Enables release swing easing
+
+    scrollBar: &#39;#scrollbar&#39;, // Attaches a scroll bar
+
+    speed: 600, // Duration based (tweening) animations speed in milliseconds
+    easing: &#39;easeOutExpo&#39; // Tweening animations easing function
+});
+
+// Register an animation renderer
+parallax.on(&#39;load move&#39;, renderFrame);
+
+// Initiate the Sly object
+parallax.init();
+</code></pre>
+<p>The <code>renderFrame</code> function receives the Sly object as its <code>this</code> value that you use to access the position object, which is all you need to render one frame:</p>
+<pre><code class="language-js">function renderFrame(eventName) {
+    this.pos.start; // Start position: `0`
+    this.pos.cur; // Current position
+    this.pos.dest; // In animation, this is the destination position
+    this.pos.end; // End position: `10000` in this example
+    // ... and now do something with it
+}
+</code></pre>
+<h3><a href="http://darsa.in/sly/examples/parallax.html">Parallax mode example</a></h3><h2>Features disabled in parallax mode</h2><ul>
+<li>Item navigation (duh).</li>
+<li>Paging and pages bar.</li>
+<li>Animated cycling.</li>
+<li>Dynamic scrollbar handle.</li>
+</ul>
+
+    <div class="footer-primary-container">
+      <div class="footer-primary">
+        <i class="icon icon-present"></i> No risks, no contracts, cancel anytime. Satisfaction guaranteed or Gif is Free. Veteran Founded.
+        <div class="colophon">&copy; Pelorus</div>
+      </div>
+    </div>
+    
+
+    <!-- build:js scripts/main.js -->
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/sly/dist/sly.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>
