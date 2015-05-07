@@ -27,7 +27,7 @@ $(document).ready(function() {
   new ScrollMagic.Scene({
     triggerElement: ".hero-giftright",
     triggerHook: "onLeave",
-    duration: $(".hero-giftright").height()*1.5
+    duration: $(window).height()*1.5
   })
   .setTween(TweenMax.fromTo(
     ".hero-giftright .hero-bg", 1,
@@ -40,7 +40,7 @@ $(document).ready(function() {
   new ScrollMagic.Scene({
     triggerElement: ".hero-nevermiss",
     triggerHook: "onEnter",
-    duration: $(".hero-nevermiss").height()*3
+    duration: $(window).height()*1.5
   })
   .setTween(TweenMax.fromTo(
     ".hero-nevermiss .hero-bg", 1,
@@ -53,7 +53,7 @@ $(document).ready(function() {
   new ScrollMagic.Scene({
     triggerElement: ".hero-deserveit",
     triggerHook: "onEnter",
-    duration: $(".hero-deserveit").height()*3
+    duration: $(window).height()*1.5
   })
   .setTween(TweenMax.fromTo(
     ".hero-deserveit .hero-bg", 1,
@@ -67,7 +67,7 @@ $(document).ready(function() {
   new ScrollMagic.Scene({
     triggerElement: ".hero-dothis",
     triggerHook: "onEnter",
-    duration: $(".hero-dothis").height()*3
+    duration: $(window).height()*1.5
   })
   .setTween(TweenMax.fromTo(
     ".hero-dothis .hero-bg", 1,
