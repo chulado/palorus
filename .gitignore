@@ -11,8 +11,6 @@ dist
 dist/*
 dist/**/*
 
-# app/vendor
-
 tmp
 tmp/*
 tmp/**/*

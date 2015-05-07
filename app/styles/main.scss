@@ -12,6 +12,8 @@ $susy: (
 
 $max-width: 1068px;
 
+$screen-sm: 590px;
+
 // =====================================
 // Base Element Styles
 // =====================================
@@ -20,6 +22,11 @@ body {
   font-size: 15px;
   font-family: $font-primary;
   background: #e4e7e9;
+  padding-top: 50px;
+
+  @include susy-breakpoint($screen-sm, $susy) {
+    padding-top: 0;
+  }
 }
 
 * {
@@ -89,23 +96,35 @@ button, .btn {
   position: fixed;
   top: 0; left: 0; right: 0;
   width: 100%;
+  padding: 0 10px;
   z-index: 100;
+  transition: 0.5s;
+  background: rgba(255,255,255,0);
 }
+
 
 .header-primary {
   @include container;
+  position: relative;
   max-width: $max-width;
   padding: 1.666666666% 0.83333%;
-
-  > .brand {
-    @include span(50%);
-  }
+  transition: 0.5s;
 
   > .nav {
-    @include span(50%);
+    position: absolute;
+    right: 0px;
     text-align: right;
 
     a { margin-left: 10px; }
+  }
+}
+
+
+.scrolled .header-primary-container {
+  background: rgba(255,255,255,0.95);
+  
+  .header-primary {
+    padding: 1% 0.83333% 0.5%;
   }
 }
 
@@ -122,14 +141,23 @@ button, .btn {
 
 .brand-slogan {
   float: left;
-  display: block;
   line-height: 41px;
   font-size: 1.2em;
+  display: none; 
+
+  @include susy-breakpoint($screen-sm, $susy) {
+    display: block;
+  }
 }
 
 h2 {
   color: #737373;
-  font-size: 32px;
+  font-size: 19px;
+  padding: 0 10px;
+
+  @include susy-breakpoint($screen-sm, $susy) {
+    font-size: 32px;
+  }
 }
 
 h3 {
@@ -175,7 +203,7 @@ p {
     height: 0;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    //background-attachment: fixed;
   }
 
   h1 {
@@ -185,7 +213,8 @@ p {
     margin: 0;
     background-size: contain;
     background-position: center;
-    text-indent: -9999999999999em;
+
+    span { display: none; }
   }
 }
 
@@ -296,8 +325,14 @@ p {
 }
 
 .feature {
-  @include span(1 of 3);
-  float: left;
+  padding: 0 25px 30px 25px; 
+
+  @include susy-breakpoint($screen-sm, $susy) {
+    @include span(1 of 3);
+    float: left;
+    bottom: 0;
+  }
+
   text-align: center;
 }
 
@@ -322,16 +357,20 @@ p {
 }
 
 .gradient-bar-pricing {
-  background-image: linear-gradient( 135deg, rgb(124,161,101) 0%, rgb(75,138,115) 60%, rgb(64,112,142) 100%);
+  background-image: linear-gradient(147deg,#7ca165 0%,#4b8a73 38%,#40708e 100%);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15), inset 0px -1px 0px 0px rgba(0, 0, 0, 0.09);
 
   .price-per-gift {
-    @include span(1 of 4);
+    @include susy-breakpoint($screen-sm, $susy) {
+      @include span(1 of 4);
+    }
   }
     
   .text-unit {
-    @include span(3 of 4);
-    padding-left: 5%;
+    @include susy-breakpoint($screen-sm, $susy) {
+      @include span(3 of 4);
+      padding-left: 5%;
+    }
   }
 }
 
@@ -341,7 +380,9 @@ p {
 
 
   .family-photo {
-    @include span(214 of 712);
+    @include susy-breakpoint($screen-sm, $susy) {
+      @include span(214 of 712);
+    }
 
     img {
       width: 100%;
@@ -354,8 +395,10 @@ p {
   }
 
   .text-unit {
-    @include span(498 of 712);
-    padding-left: 5%;
+    @include susy-breakpoint($screen-sm, $susy) {
+      @include span(498 of 712);
+      padding-left: 5%;
+    }
   }
 
   p {
@@ -410,9 +453,14 @@ p {
 }
 
 .frame { width: 100%; height: 200px; padding: 0;   margin-top: 5%; overflow: hidden; }
-.frame .slidee { margin: 0; padding: 0; height: 100%; list-style: none; display: flex;   justify-content: space-between;}
+.frame .slidee { margin: 0; padding: 0; height: 100%; list-style: none; }
 .frame .slidee li { 
-   padding: 0; width: 300px; height: 100%;
+   padding: 0; width: 300px; height: 100%; float: left;
+   img { transition: transform 0.5s; transform: scale(1); }
+
+   &:not(.active) {
+    img { transform: scale(0.9); }
+   }
 }
 
 
@@ -460,17 +508,35 @@ p {
 
 .footer-primary {
   @include container;
-  max-width: $max-width;
-  line-height: 32px;
-  vertical-align: top;
   color: #989898;
+  text-align: center;
+  padding: 0 25px;
+  
+  @include susy-breakpoint($screen-sm, $susy) {
+    max-width: $max-width;
+    line-height: 32px;
+    vertical-align: top;
+    text-align: left;
+    padding: 0;
+  }
 
   .icon {
     color: #4daee4;
-    margin-right: 10px;
+    display: block;
+
+    @include susy-breakpoint($screen-sm, $susy) {
+      margin-right: 10px;
+      display: inline;
+    }
   }
 
   .colophon {
-    float: right;
+    display: block;
+    padding-top: 40px;
+
+    @include susy-breakpoint($screen-sm, $susy) {
+      float: right;
+      padding: 0;
+    }
   }
 }

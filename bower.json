@@ -16,7 +16,9 @@
     "normalize-css": "~3.0.3",
     "susy": "~2.2.3",
     "sly": "~1.5.1",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "scrollmagic": "~2.0.5",
+    "greensock": "~1.16.1"
   },
   "devDependencies": {}
 }
